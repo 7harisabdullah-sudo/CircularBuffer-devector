@@ -1,6 +1,7 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stddef.h>
 
-#include "devector.h"
+#include"devector.h"
 
 int main() {
 
