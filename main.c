@@ -45,7 +45,7 @@ int main() {
             }
             break;
         case 3:
-            if( devector_pop_back(&dv) == INVALID_BUFFER_STATE) {
+            if(devector_pop_back(&dv) == INVALID_BUFFER_STATE) {
 
                 printf("FAILURE: MEMORY LIMIT REACHED");
 
