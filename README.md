@@ -34,7 +34,7 @@ A minimalist, double-ended vector in C with power-of-two resizing and zero runti
 
 6) size() returns **(tail + head) % capacity** because:
 - in **wrap-around case**, head indicates the count of elements on the right of [O] and tail is the count of elements on the left of [O], summing upto **head + tail** and this is when **head + tail < capacity** (because front > back, so capacity - 1 - head > tail, so head + tail < capacity - 1, so head + tail < capacity).
-- size is **head + tail - capacity** in the contiguous case because size = back - (front + 1) = tail - capacity + head = head + tail - capacity there and this is the case when **head + tail >= capacity** (because front < back, so capacity - 1 - head < tail, so head + tail > capacity - 1, so head + tail >= capacity).
+- size is **head + tail - capacity** in the **contiguous case** because size = back - (front + 1) = tail - capacity + head = head + tail - capacity there and this is the case when **head + tail >= capacity** (because front < back, so capacity - 1 - head < tail, so head + tail > capacity - 1, so head + tail >= capacity).
 - we can write those cases combined as **(head + tail) % capacity**.
 
 7) at() is actually quite easier to reason about. the ith conceptual index means the (capacity - head + i) buffer index because (capacity - head) is (front + 1) and in both contiguous and wrap around cases, we can do **(front + 1 + i) % capacity** and that would give us the address of ith conceptual index. Notice that we are treating front + 1 as a base because front is the point of insertion and so front + 1 is the actual front element.
