@@ -4,19 +4,19 @@ A minimalist, double-ended vector in C with power-of-two resizing and zero runti
 
 1) "enum devectorBufferState" is majorly a return value which tells whether the buffer state is valid or invalid (which can only be a consequence of resize failure(INVALID_BUFFER_STATE)).
 
-3) "struct devector" is the data structure and comprises of 5 struct fields:
+2) "struct devector" is the data structure and comprises of 5 struct fields:
 - **buffer** holds the memory address of the space where data is written.
 - **elem_size** is the sizeof(element) which gets written to buffer
 - **capacity** is (as suggested by the name) the capacity of buffer (the unit of capacity is elem_size and (capacity * elem_size) is the actualy size of space (in bytes) occupied by the buffer).
 - **head & tail** fields are the insertion points for front and back elements respectively. But there is one important thing to notice that head is the index that is calculated from the end and tail is index calculated from the start of circular buffer.
 
-4) size() returns the current number of elements in the buffer.
+3) size() returns the current number of elements in the buffer.
 
-5) at() returns the address of the ith index element (we are talking about a conceptual ith index (which is determined by the order in which we performed push and pop operations), not the actual ith index of buffer)
+4) at() returns the address of the ith index element (we are talking about a conceptual ith index (which is determined by the order in which we performed push and pop operations), not the actual ith index of buffer)
 
-6) push() and pop() functions for front and back are the reason I am writing this great piece of literature and the reason you reading it. I am sure I don't need to explain a thing about them.
+5) push() and pop() functions for front and back are the reason I am writing this great piece of literature and the reason you reading it. I am sure I don't need to explain a thing about them.
 
-7) deploy() is the constructor and destroy() is the destructor. They together serve as the opening and closing of this great ceremony.
+6) deploy() is the constructor and destroy() is the destructor. They together serve as the opening and closing of this great ceremony.
 
 ## .c documentation:
 
