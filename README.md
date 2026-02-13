@@ -37,7 +37,7 @@ A minimalist, double-ended vector in C with power-of-two resizing and zero runti
 - size is **head + tail - capacity** in the **contiguous case** because size = back - (front + 1) = tail - capacity + head = head + tail - capacity there and this is the case when **head + tail >= capacity** (because front < back, so capacity - 1 - head < tail, so head + tail > capacity - 1, so head + tail >= capacity).
 - we can write those cases combined as **(head + tail) % capacity**.
 
-7) at() is actually quite easier to reason about. the ith conceptual index means the (capacity - head + i) buffer index because (capacity - head) is (front + 1) and in both contiguous and wrap around cases, we can do **(front + 1 + i) % capacity** and that would give us the address of ith conceptual index. Notice that we are treating front + 1 as a base because front is the point of insertion and so front + 1 is the actual front element.
+7) at() is actually quite easier to reason about. the ith conceptual index means the (capacity - head + i) buffer index because (capacity - head) is (front + 1) and in both contiguous and wrap around cases, we can do **(front + 1 + i) % capacity** and that would give us the address of ith conceptual index element. Notice that we are treating front + 1 as a base because front is the point of insertion and so front + 1 is the actual front element.
 
 8) resize() is pretty simple once you understand the 3 cases of data representations.
 - If the case is contiguous, we have to copy size elements from **front + 1 = cpacity - head** where **size = back - (front + 1) = tail - (capacity - head)** elements precisely. We copy this chunk and place it at the start of the tmp buffer. head becomes 0 and tail becomes the size of this chunk.
