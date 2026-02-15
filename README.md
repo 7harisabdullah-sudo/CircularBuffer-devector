@@ -32,7 +32,7 @@ devector is a double-ended dynamic array implemented as a circular buffer with p
 
 4) **size()** returns **(tail + head) % capacity** because:
 - In wrap-around case, **head** is the count of elements on the right of [O] and **tail** is the count of elements on the left of [O], summing upto **head + tail** and this is the case when **head + tail < capacity** (because **front >= back**, so **capacity - 1 - head >= tail**, and so **head + tail <= capacity - 1**, and so **head + tail < capacity**).
-- In contiguous case, size is **head + tail - capacity** because the count of elements is **back - (front + 1) = head + tail - capacity**, and this is the case when **head + tail >= capacity** (because **front < back** so **capacity - 1 - head < tail** and so **head + tail > capacity - 1** and so **head + tail >= capacity**).
+- In contiguous case, size is **head + tail - capacity** because the count of elements is **back - (front + 1) = head + tail - capacity**, and this is the case when **head + tail >= capacity** (because **front < back**, so **capacity - 1 - head < tail**, and so **head + tail > capacity - 1**, and so **head + tail >= capacity**).
 - Note that **0 <= head < capacity** and **0 <= tail < capacity** and so **0 <= head + tail < 2 * capacity**.
 - So, the size is **head + tail** if **head + tail < capacity**, and size is **head + tail - capacity** if **head + tail >= capacity**, and **head + tail < 2 * capacity**. We can write those cases combined as **(head + tail) % capacity**.
 
