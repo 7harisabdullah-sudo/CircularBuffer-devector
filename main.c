@@ -72,7 +72,7 @@ int main() {
         printf("\ndata: ");
 
         for (size_t i = 0; i < devector_size(&dv); i++) {
-            printf(" %d ", *(int*)devector_at(&dv, i));
+            printf(" %d ", *(int*)devector_get(&dv, i));
 
         }
 
