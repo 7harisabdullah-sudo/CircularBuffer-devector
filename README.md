@@ -12,7 +12,7 @@ devector is a double-ended dynamic array implemented as a circular buffer with p
 
 3) **size()** returns the current number of elements in the **buffer**.
 
-4) **at()** returns the address of the element at ith conceptual-index.
+4) **get()** returns the address of the element at ith conceptual-index.
 
 5) **push_back()** inserts at **back** and **push_front()** inserts at **front**. On the other hand, **pop_back()** removes from **back** and **pop_front()** removes from **front**.
 
@@ -36,7 +36,7 @@ devector is a double-ended dynamic array implemented as a circular buffer with p
 - Note that **0 <= head < capacity** and **0 <= tail < capacity** and so **0 <= head + tail < 2 * capacity**.
 - So, the size is **head + tail** if **head + tail < capacity**, and size is **head + tail - capacity** if **head + tail >= capacity**, and **head + tail < 2 * capacity**. We can write those cases combined as **(head + tail) % capacity**.
 
-5) **at()** is actually quite easier to reason about. The ith conceptual-index means the **(capacity - head + i) % capacity** buffer-index because **capacity - head = front + 1** and in both contiguous and wrap around cases, **(front + 1 + i) % capacity** gives us the address of the element at ith conceptual-index. Note that **front** is the point of insertion and so **(front + 1) % capacity** is the actual buffer-index where the front element is located.
+5) **get()** is actually quite easier to reason about. The ith conceptual-index means the **(capacity - head + i) % capacity** buffer-index because **capacity - head = front + 1** and in both contiguous and wrap around cases, **(front + 1 + i) % capacity** gives us the address of the element at ith conceptual-index. Note that **front** is the point of insertion and so **(front + 1) % capacity** is the actual buffer-index where the front element is located.
 
 6) **resize()** is pretty simple once you understand the 3 cases of data representation.
 - If the case is contiguous, we have to copy **back - (front + 1) = tail - (capacity - head) = head + tail - capacity** number of elements from **front + 1 = capacity - head** index of the current buffer to the start of the tmp buffer. **head** becomes 0 and **tail** becomes the size of this chunk.
